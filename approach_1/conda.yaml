@@ -1,0 +1,12 @@
+name: my-env
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      - pandas
+      - azureml-core
+      - azure-ai-ml
+      - azureml-mlflow    
+      - azureml-inference-server-http
+      - transformers 
+      - sentence-transformers
