@@ -1,0 +1,24 @@
+{
+	"name": "Speech Experiment Accelerator",
+	"image": "mcr.microsoft.com/azureml/curated/azure-ai-studio-development:latest",
+	"features": {
+		"ghcr.io/devcontainers/features/git:1": {},
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
+	},
+	"postCreateCommand": "make setup",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-azuretools.azure-dev",
+				"ms-azuretools.vscode-bicep",
+				"ms-python.python",
+				"ms-python.pylint",
+				"ms-python.black-formatter",
+				"ms-vscode.makefile-tools",
+				"GitHub.vscode-pull-request-github",
+				"github.vscode-github-actions",
+				"redhat.vscode-yaml"
+			]
+		}
+	}
+}
