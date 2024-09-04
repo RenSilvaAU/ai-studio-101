@@ -9,4 +9,4 @@ dependencies:
     - azureml-defaults==1.53.0
     - inference-schema
     - joblib==1.2.0
-    - transformers
+    - sentence-transformers==3.0.1
