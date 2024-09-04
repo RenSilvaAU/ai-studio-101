@@ -5,6 +5,15 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 from inference_schema.schema_decorators import input_schema, output_schema
 from inference_schema.parameter_types.standard_py_parameter_type import StandardPythonParameterType
+from dotenv import load_dotenv
+
+load_dotenv()
+
+HUGGINGFACE_TOKEN = os.getenv("HUGGINGFACE_TOKEN")
+
+
+from huggingface_hub import login
+login(token=HUGGINGFACE_TOKEN)
 
 model_id = "meta-llama/Meta-Llama-Guard-2-8B"
 device = "cuda"

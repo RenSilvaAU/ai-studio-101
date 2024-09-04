@@ -10,3 +10,5 @@ dependencies:
     - inference-schema
     - joblib==1.2.0
     - sentence-transformers==3.0.1
+    - huggingface_hub
+    - python-dotenv
