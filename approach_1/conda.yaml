@@ -10,3 +10,4 @@ dependencies:
       - azureml-inference-server-http
       - transformers 
       - sentence-transformers
+      - joblib

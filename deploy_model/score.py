@@ -2,25 +2,23 @@ import os
 import logging
 import json
 from sentence_transformers import SentenceTransformer
+from inference_schema.schema_decorators import input_schema, output_schema
+from inference_schema.parameter_types.standard_py_parameter_type import StandardPythonParameterType
 
 def init():
-    """
-    This function is called when the container is initialized/started, typically after create/update of the deployment.
-    You can write the logic here to perform init operations like caching the model in memory
-    """
     global model
     model = SentenceTransformer('sentence-transformers/all-mpnet-base-v2')
     logging.info("Init complete")
 
+# Define the expected input and output schema
+input_sample = StandardPythonParameterType({"sentences": "I feel great this morning"})
+output_sample = StandardPythonParameterType([[]])  # Expecting a list of embeddings (lists of floats)
 
-def run(raw_data):
-    """
-    This function is called for every invocation of the endpoint to perform the actual scoring/prediction.
-    In the example we extract the data from the json input and call the scikit-learn model's predict()
-    method and return the result back
-    """
+@input_schema(param_name="data", param_type=input_sample)
+@output_schema(output_type=output_sample)
+def run(data):
     logging.info("Request received")
-    sentences = json.loads(raw_data)["sentences"]
+    sentences = data.get("sentences")
     embeddings = model.encode(sentences)
     logging.info("Request processed")
     return embeddings.tolist()
