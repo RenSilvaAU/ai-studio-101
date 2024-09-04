@@ -12,3 +12,4 @@ dependencies:
     - sentence-transformers==3.0.1
     - huggingface_hub
     - python-dotenv
+    - accelerate
