@@ -7,9 +7,7 @@ dependencies:
   - pip=23.0.1
   - pip:
     - azureml-defaults==1.53.0
-    - inference-schema
-    - joblib==1.2.0
     - sentence-transformers==3.0.1
-    - huggingface_hub
-    - python-dotenv
-    - accelerate
+    - huggingface-hub==0.24.6
+    - python-dotenv==1.0.1
+    - accelerate==0.34.0

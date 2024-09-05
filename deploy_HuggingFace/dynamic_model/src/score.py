@@ -1,23 +1,17 @@
-import os
 import logging
 import json
-import joblib
+from sentence_transformers import SentenceTransformer
 
 def init():
     global model
-    # Load the model from the path specified by the environment variable
-    model_path = os.path.join(
-        os.getenv("AZUREML_MODEL_DIR"), "model/all-mpnet-base-v2"
-    )
-    # deserialize the model file back into a sklearn model
-    model = joblib.load(model_path)
+    model = SentenceTransformer('sentence-transformers/all-mpnet-base-v2')
     logging.info("Init complete")
 
 def run(data):
     try:
         # Parse the input data
         inputs = json.loads(data)
-        sentences = inputs['data']
+        sentences = inputs['sentences']
         
         # Perform inference
         embeddings = model.encode(sentences)
